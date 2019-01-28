@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:inputType="textEmailAddress"
+        android:id="@+id/cust-mail-edit"
+        android:hint="e-mail"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    <EditText
+        android:id="@+id/cust-user-edit"
+        android:hint="username"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    <EditText
+        android:inputType="textPassword"
+        android:id="@+id/cust-pass-edit"
+        android:hint="pass"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    <EditText
+        android:inputType="number"
+        android:id="@+id/cust-phone-edit"
+        android:hint="phone"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    <EditText
+        android:id="@+id/cust-address-edit"
+        android:hint="address"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    <EditText
+        android:inputType="number"
+        android:id="@+id/cust-idNum-edit"
+        android:hint="id number"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+
+<Button
+    android:id="@+id/cust-btn-sign"
+    android:text="sign"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</LinearLayout>
