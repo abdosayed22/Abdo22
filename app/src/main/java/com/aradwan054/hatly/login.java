@@ -16,6 +16,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class login extends AppCompatActivity {
     EditText mail, pass;
@@ -46,13 +50,8 @@ public class login extends AppCompatActivity {
 
                 if (mail.getText().toString().equals("")) mail.setError("Please Enter mail");
                 if (pass.getText().toString().equals("")) pass.setError("Please Enter your Password");
-
-
-
                 String myMail=mail.getText().toString();
                 String myPass= pass.getText().toString();
-
-
                 mAuth.signInWithEmailAndPassword(myMail,myPass)
                         .addOnCompleteListener(login.this, new OnCompleteListener<AuthResult>() {
                             @Override
@@ -65,6 +64,19 @@ public class login extends AppCompatActivity {
                                     startActivity(intent);
                                     mail.setText("");
                                     pass.setText("");
+                                    FirebaseDatabase.getInstance().getReference().child("Accounts").child(mAuth.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(DataSnapshot dataSnapshot) {
+                                            Log.v("Logging", "dataSnapShot is " + dataSnapshot.toString() + " , uid is "
+                                                    + mAuth.getCurrentUser().getUid());
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(DatabaseError databaseError) {
+
+                                        }
+                                    });
                                 } else
 
                                     Toast.makeText(login.this, "Authentication failed", Toast.LENGTH_SHORT).show();

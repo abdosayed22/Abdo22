@@ -49,52 +49,53 @@ public class signup extends AppCompatActivity {
 
 
             if (mail.getText().toString().equals("")) mail.setError("Please Enter Your mail");
-            if (pass.getText().toString().equals("")) pass.setError("Please Enter your Password");
-            if (username.getText().toString().equals("")) username.setError("Please Enter your UserName");
-            if (mobile.getText().toString().equals("")) mobile.setError("Please Enter your mobile number");
-            if (nationalNum.getText().toString().equals("")) nationalNum.setError("Please Enter your national number ");
-            if (address.getText().toString().equals("")) address.setError("Please Enter your address");
+            else if (username.getText().toString().equals("")) username.setError("Please Enter your UserName");
+            else if (pass.getText().toString().equals("")) pass.setError("Please Enter your Password");
 
-            mAuth.createUserWithEmailAndPassword(mail.getText().toString(), pass.getText().toString())
-                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
+            else if (mobile.getText().toString().equals("")) mobile.setError("Please Enter your mobile number");
+            else if (address.getText().toString().equals("")) address.setError("Please Enter your address");
+            else if (nationalNum.getText().toString().equals("")) nationalNum.setError("Please Enter your national number ");
 
-                            if (!task.isSuccessful())
-                                Toast.makeText(signup.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
+else {
+                mAuth.createUserWithEmailAndPassword(mail.getText().toString(), pass.getText().toString()).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
 
-                     else {
-                                Map<String, String> map = new HashMap<String, String>();
-                                map.put("e-mail", mail.getText().toString());
-                                map.put("Password", pass.getText().toString());
-                                map.put("Phone", mobile.getText().toString());
-                                map.put("UserName", username.getText().toString());
-                                map.put("national-number", nationalNum.getText().toString());
-                                map.put("address", address.getText().toString());
-                                myRef.push().setValue(map);
+                        if (!task.isSuccessful()) Toast.makeText(signup.this, "Authentication failed " + " " + task.getException().toString(), Toast.LENGTH_SHORT).show();
 
-                                // Sign in success, update UI with the signed-in user's information
+                        else {
+                            Map<String, String> map = new HashMap<String, String>();
+                            map.put("e-mail", mail.getText().toString());
+                            map.put("Password", pass.getText().toString());
+                            map.put("Phone", mobile.getText().toString());
+                            map.put("UserName", username.getText().toString());
+                            map.put("national-number", nationalNum.getText().toString());
+                            map.put("address", address.getText().toString());
+                            myRef.child(mAuth.getCurrentUser().getUid()).setValue(map);
 
-                                Toast.makeText(signup.this, "Account Created", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), Order.class);
-                                intent.putExtra("e-mail", mail.getText().toString());
-                                intent.putExtra("Password", pass.getText().toString());
-                                intent.putExtra("Phone", mobile.getText().toString());
-                                intent.putExtra("UserName", username.getText().toString());
-                                intent.putExtra("address", address.getText().toString());
-                                intent.putExtra("national-number", nationalNum.getText().toString());
+                            // Sign in success, update UI with the signed-in user's information
 
-                                startActivity(intent);
-                                mail.setText("");
-                                pass.setText("");
-                                mobile.setText("");
-                                username.setText("");
-                                address.setText("");
-                                nationalNum.setText("");}
-                    // ...
-                }
-            });
+                            Toast.makeText(signup.this, "Account Created", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(getApplicationContext(), Order.class);
+                            intent.putExtra("e-mail", mail.getText().toString());
+                            intent.putExtra("Password", pass.getText().toString());
+                            intent.putExtra("Phone", mobile.getText().toString());
+                            intent.putExtra("UserName", username.getText().toString());
+                            intent.putExtra("address", address.getText().toString());
+                            intent.putExtra("national-number", nationalNum.getText().toString());
 
+                            startActivity(intent);
+                            mail.setText("");
+                            pass.setText("");
+                            mobile.setText("");
+                            username.setText("");
+                            address.setText("");
+                            nationalNum.setText("");
+                        }
+                        // ...
+                    }
+                });
+            }
 
         } catch (Exception e) {
             Toast.makeText(getApplicationContext(), "Error " + e.getMessage(), Toast.LENGTH_LONG).show();
