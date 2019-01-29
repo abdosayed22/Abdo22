@@ -40,11 +40,11 @@
         android:layout_height="50dp" />
 
 <Button
+android:onClick="Sign_up"
     android:id="@+id/cust-btn-sign"
     android:text="sign"
     android:layout_width="match_parent"
     android:layout_height="wrap_content" />
-
 
 
 

@@ -6,8 +6,9 @@
    >
 
     <EditText
-        android:hint="user name"
-        android:id="@+id/login-user-edt"
+        android:inputType="textEmailAddress"
+        android:hint="mail"
+        android:id="@+id/login-mail-edt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
     <EditText
