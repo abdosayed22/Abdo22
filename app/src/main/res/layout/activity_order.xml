@@ -5,20 +5,25 @@ android:orientation="vertical"
     android:layout_height="match_parent"
  >
 <EditText
+    android:id="@+id/desc-request"
     android:hint="description"
     android:layout_width="match_parent"
     android:layout_height="100dp" />
 
     <EditText
+        android:id="@+id/price-request"
         android:hint="max price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
     <Button
+        android:id="@+id/location-btn"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:text="set my location"/>
     <Button
+        android:onClick="order"
+        android:id="@+id/order-btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Order"/>
