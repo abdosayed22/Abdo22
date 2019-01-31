@@ -17,11 +17,6 @@ android:orientation="vertical"
         android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/location-btn"
-       android:layout_width="wrap_content"
-       android:layout_height="wrap_content"
-       android:text="set my location"/>
-    <Button
         android:onClick="order"
         android:id="@+id/order-btn"
         android:layout_width="wrap_content"
@@ -29,4 +24,4 @@ android:orientation="vertical"
         android:text="Order"/>
 
 
-    </LinearLayout>
+</LinearLayout>

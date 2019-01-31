@@ -19,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 import java.util.Map;
 
-public class signup extends AppCompatActivity {
+public class signup extends AppCompatActivity  {
     EditText mail, pass, username, mobile, nationalNum, address;
     Button sign;
     FirebaseDatabase database;

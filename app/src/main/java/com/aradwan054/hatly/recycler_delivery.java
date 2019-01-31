@@ -14,39 +14,37 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class Recycler extends AppCompatActivity {
-    ArrayList<request> requestList;
-    RecyclerViewAdapter requestArrayAdapter;
+public class recycler_delivery extends AppCompatActivity {
+    ArrayList<request_delivery> requestDeliveryList;
+    RecyclerViewAdapterDelivery requestArrayAdapter;
     private RecyclerView recyclerView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recycler);
+        setContentView(R.layout.activity_recycler_delivery);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         DatabaseReference ref = database.getReference("Requests");
-        requestList = new ArrayList<>();
-        recyclerView = findViewById(R.id.recycler);
+        requestDeliveryList = new ArrayList<>();
+        recyclerView=findViewById(R.id.recycler_delivery);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(mLayoutManager);
 
-
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot dataSnapshot1 : dataSnapshot.getChildren()) {
+                for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()){
                     String price = dataSnapshot1.child("price").getValue().toString();
                     String description = dataSnapshot1.child("request-description").getValue().toString();
 
-                    request req = new request();
-                    req.setDescription(description);
-                    req.setPrice(price);
+                    request_delivery Request = new request_delivery();
+                    Request.setDescription(description);
+                    Request.setPrice(price);
 
-                    requestList.add(req);
+                    requestDeliveryList.add(Request);
                 }
-                requestArrayAdapter = new RecyclerViewAdapter(requestList, Recycler.this);
+                requestArrayAdapter = new RecyclerViewAdapterDelivery(requestDeliveryList, recycler_delivery.this);
                 recyclerView.setAdapter(requestArrayAdapter);
             }
 
@@ -55,5 +53,10 @@ public class Recycler extends AppCompatActivity {
 
             }
         });
+
+
+
+
+
     }
 }

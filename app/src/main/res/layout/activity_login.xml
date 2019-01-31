@@ -1,44 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-   android:orientation="vertical"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-   >
-
-    <EditText
-        android:inputType="textEmailAddress"
-        android:hint="mail"
-        android:id="@+id/login-mail-edt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <EditText
-        android:inputType="textPassword"
-        android:hint="pass"
-        android:id="@+id/login-pass-edt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    android:orientation="vertical"
+    android:background="#FFF">
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:orientation="horizontal">
-        <Button
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="#FFF"
+        tools:ignore="ScrollViewSize">
 
-            android:id="@+id/cust-login-btn"
-            android:text="Login as customer"
+        <ImageView
+            android:id="@+id/login-logo-img"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:background="#929292"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/welcome-txt"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="#FFF"
+            android:fontFamily="@font/autour_one"
+            android:text="Welcome To Hatly"
+            android:textColor="#4CAF50"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText" />
+        <TextView
+            android:background="#FFF"
+            android:id="@+id/continue-txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
+            android:textColor="#2B2B2B"
+            android:textSize="18sp"
+            android:text="Sign in to continue"
+            tools:ignore="HardcodedText"
+            />
+
+
+        <TextView
+            android:background="#FFF"
+            android:id="@+id/login-mail-txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="E-Mail"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:layout_marginTop="60dp"
+            android:layout_marginStart="25dp"
+            tools:ignore="HardcodedText" />
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/login-mail-edt"
+            android:layout_width="300dp"
+            android:inputType="textEmailAddress"
+            android:layout_height="50dp"
+            android:layout_marginTop="-5dp"
+            android:layout_marginStart="25dp"
+            tools:ignore="HardcodedText,RtlSymmetry"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            />
+
+        <TextView
+            android:background="#FFF"
+
+            android:id="@+id/login-pass-txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:textSize="16sp"
+            android:layout_marginStart="25dp"
+            android:layout_marginTop="20dp"
+            tools:ignore="HardcodedText" />
+        <android.support.design.widget.TextInputEditText
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:inputType="textPassword"
+            android:layout_marginStart="25dp"
+            android:id="@+id/login-pass-edt"
+            android:layout_marginTop="-5dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            />
+        <LinearLayout
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <RadioGroup
+                android:gravity="center_horizontal"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal"
+                android:id="@+id/radio-group"
+                android:layout_width="300dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center_horizontal"
+                tools:ignore="UselessParent">
+                <RadioButton
+                    android:layout_marginEnd="15dp"
+                    android:id="@+id/rdb-as-customer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Customer"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textAllCaps="true"
+                    android:textColor="#458548"
+                    tools:ignore="HardcodedText" />
+                <RadioButton
+                    android:id="@+id/rdb-as-delivery"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Delivery"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    android:textAllCaps="true"
+                    android:textColor="#458548"
+                    tools:ignore="HardcodedText" />
+            </RadioGroup>
+        </LinearLayout>
+
         <Button
-            android:id="@+id/delvr-login-btn"
-            android:text="Login as delivery"
+            android:id="@+id/login-sign-btn"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="25dp"
+            android:background="@drawable/sign_btn_back"
+            android:layout_marginTop="20dp"
+            android:text="sign in"
+            android:textStyle="bold"
+            tools:ignore="HardcodedText"
+            android:textSize="20sp"
+            android:textColor="#fff"/>
+
+        <TextView
+            android:background="#FFF"
+            android:id="@+id/signup-txt"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:textColor="#2B2B2B"
+            android:textSize="14sp"
+            android:textAllCaps="true"
+            android:text="sign up for an account ?"
+            tools:ignore="HardcodedText"
+            android:layout_marginBottom="10dp"
+            />
 
     </LinearLayout>
-    <Button
-        android:id="@+id/sign-up-btn"
-        android:text="sign up"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-
-</LinearLayout>
+</ScrollView>
