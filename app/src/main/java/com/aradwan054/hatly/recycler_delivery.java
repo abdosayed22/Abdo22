@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,6 +21,8 @@ public class recycler_delivery extends AppCompatActivity {
     RecyclerViewAdapterDelivery requestArrayAdapter;
     private RecyclerView recyclerView;
 
+    String latitude ;
+    String longitude ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,18 +34,17 @@ public class recycler_delivery extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 1);
         recyclerView.setLayoutManager(mLayoutManager);
-
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot dataSnapshot1: dataSnapshot.getChildren()){
                     String price = dataSnapshot1.child("price").getValue().toString();
                     String description = dataSnapshot1.child("request-description").getValue().toString();
-
+                   //  latitude=dataSnapshot1.child("Latitude").getValue().toString();
+                    // longitude=dataSnapshot1.child("Longitude").getValue().toString();
                     request_delivery Request = new request_delivery();
                     Request.setDescription(description);
                     Request.setPrice(price);
-
                     requestDeliveryList.add(Request);
                 }
                 requestArrayAdapter = new RecyclerViewAdapterDelivery(requestDeliveryList, recycler_delivery.this);

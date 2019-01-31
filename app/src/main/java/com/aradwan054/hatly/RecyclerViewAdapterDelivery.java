@@ -6,13 +6,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class RecyclerViewAdapterDelivery extends RecyclerView.Adapter<RecyclerViewAdapterDelivery.MyViewHolder>{
+public class RecyclerViewAdapterDelivery extends RecyclerView.Adapter<RecyclerViewAdapterDelivery.MyViewHolder> {
     private ArrayList<request_delivery> requestDeliveryList;
-Context context;
+    Context context;
 
     public RecyclerViewAdapterDelivery(ArrayList<request_delivery> requestDeliveryList, Context context) {
         this.requestDeliveryList = requestDeliveryList;
@@ -23,14 +24,24 @@ Context context;
     @Override
     public RecyclerViewAdapterDelivery.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_delivery, parent, false);
-        return new MyViewHolder(view);    }
-
+        return new MyViewHolder(view);
+    }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerViewAdapterDelivery.MyViewHolder holder, int i) {
         final request_delivery request = requestDeliveryList.get(i);
         holder.description_edt.setText(request.getDescription());
         holder.price_edt.setText(request.getPrice() + "");
+       /* String latitude = request.getLatitude();
+      String longitude = request.getLongitude();
+        holder.getlocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+            }
+        });
+*/
 
     }
 
@@ -43,11 +54,13 @@ Context context;
 
     public static class MyViewHolder extends RecyclerView.ViewHolder {
         TextView description_edt, price_edt;
+        Button getlocation;
+
         public MyViewHolder(View itemView) {
             super(itemView);
             description_edt = (TextView) itemView.findViewById(R.id.desTxtDelivery);
             price_edt = (TextView) itemView.findViewById(R.id.priceTxtDelivery);
-
+            getlocation = (Button) itemView.findViewById(R.id.locationBtnDelivery);
         }
     }
 }
