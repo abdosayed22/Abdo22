@@ -199,8 +199,8 @@ public class login extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
                                     Toast.makeText(login.this, "Welcome", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(), Order.class);
-                                    intent.putExtra("name", mail.getText().toString());
+                                    Intent intent = new Intent(getApplicationContext(), Navigation.class);
+                                    intent.putExtra("email", mail.getText().toString());
                                     startActivity(intent);
                                     mail.setText("");
                                     pass.setText("");
@@ -219,6 +219,7 @@ public class login extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
+                                    FirebaseUser user = mAuth.getCurrentUser();
                                     Toast.makeText(login.this, "Welcome Baby", Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(getApplicationContext(), recycler_delivery.class);
                                     intent.putExtra("name", mail.getText().toString());
@@ -243,7 +244,10 @@ public class login extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(login.this, signup.class);
                 startActivity(intent);
+
             }
         });
     }
+
+
 }

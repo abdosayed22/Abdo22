@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">hatly</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="Open">Open</string>
+    <string name="Close">Close</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_maps2">Map</string>
 </resources>

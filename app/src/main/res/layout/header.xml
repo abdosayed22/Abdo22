@@ -8,7 +8,8 @@
     android:paddingStart="20dp"
     android:orientation="vertical"
     android:background="#267028"
-    tools:ignore="RtlSymmetry">
+    tools:ignore="RtlSymmetry"
+    android:id="@+id/header">
     <de.hdodenhof.circleimageview.CircleImageView
         android:src="@drawable/images"
         android:layout_width="90dp"
@@ -17,6 +18,7 @@
         android:layout_gravity="center_horizontal"
         android:layout_height="90dp" />
     <TextView
+        android:id="@+id/textname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Karim El Sayed"
